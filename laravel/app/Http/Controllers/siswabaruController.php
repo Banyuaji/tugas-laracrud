@@ -17,4 +17,20 @@ class siswabaruController extends Controller
         $siswa = siswas::destroy($id);
         return redirect(Route('siswa'));
     }
+    public function go()
+    {
+        return view('create');
+    }
+    public function create(Request $req)
+    {
+        $siswa = new siswas;
+        $siswa->nipd = $req->nipd;
+        $siswa->nama_siswa = $req->nama_siswa;
+        $siswa->tempat_lahir = $req->tempat_lahir;
+        $siswa->tanggal_lahir = $req->tanggal_lahir;
+        $siswa->kelas = $req->kelas;
+        $siswa->jurusan = $req->jurusan;
+        $siswa->save();
+        return redirect(Route('siswa'));
+    }
 }
